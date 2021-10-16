@@ -50,11 +50,11 @@ body {
   width: 1200px;
   height: 800px;
   border-radius: 20px;
-  border: 10px solid var(--white);
+  border: 10px solid rgb(105, 105, 204, 0.55);
   padding: 20px 30px
 }
 .slider-wrapper {
-  background-color: #fff;
+  background-color: var(--black);
   height: 100%;
 }
 .slider-item,
@@ -70,12 +70,15 @@ body {
   border-radius: 20px;
 }
 .slider-panel {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
+}
+.text-inspire {
+  color: var(--white);
 }
 .square-container{
   max-width: 280px;
@@ -94,7 +97,7 @@ body {
 .square {
   width: 20px;
   height: 20px;
-  background: var(--black);
+  background: var(--white);
   cursor: pointer;
   border-radius: 5px;
 }
@@ -104,5 +107,5 @@ body {
   cursor: pointer;
 }
 .square.active {
-  background: rgb(105, 105, 204);
+  background: rgb(105, 105, 204, 0.75);
 }
