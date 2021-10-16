@@ -29,7 +29,7 @@ body {
   height: 100%;
   margin: 0 auto;
 }
-.slider-title {
+.page-title {
   margin: 0;
   font-style: normal;
   font-weight: 400;
@@ -39,9 +39,25 @@ body {
   text-transform: uppercase;
   color: var(--white);
   text-align: center;
+
+}
+.slider {
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 1200px;
+  height: 810px;
+  border-radius: 20px;
+  border: 10px solid var(--white);
+  padding: 20px 30px
 }
 .slider-wrapper {
-  width: 1000px;
-  height: 810px;
-  overflow: hidden
-} 
+  background-color: #fff;
+  height: 100%;
+}
+.slider-picture-wrapper {
+
+}
+.slider-picture {
+  width: 100%;
+  height: 100%;
+}
