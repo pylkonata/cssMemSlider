@@ -17,6 +17,8 @@ body {
   padding: 0;
   border: 0;
   font-family: 'Scheherazade New', serif;
+  font-weight: 400;
+  font-size: 25px;
 }
 
 .section-slider {
@@ -30,6 +32,7 @@ body {
   margin: 0 auto;
 }
 .page-title {
+  /* display: none; */
   margin: 0;
   font-style: normal;
   font-weight: 400;
@@ -45,7 +48,7 @@ body {
   margin: 0 auto;
   margin-top: 40px;
   width: 1200px;
-  height: 810px;
+  height: 800px;
   border-radius: 20px;
   border: 10px solid var(--white);
   padding: 20px 30px
@@ -54,10 +57,52 @@ body {
   background-color: #fff;
   height: 100%;
 }
-.slider-picture-wrapper {
-
+.slider-item,
+.text-inspire {
+  display: none;
+}
+.active {
+  display: block;
 }
 .slider-picture {
   width: 100%;
   height: 100%;
+  border-radius: 20px;
+}
+.slider-panel {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.square-container{
+  max-width: 280px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.square-wrap {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.square {
+  width: 20px;
+  height: 20px;
+  background: var(--black);
+  cursor: pointer;
+  border-radius: 5px;
+}
+.square:hover {
+  background: #D2B183;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+.square.active {
+  background: rgb(105, 105, 204);
 }
