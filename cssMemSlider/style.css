@@ -59,18 +59,29 @@ body {
   display: block;
 }
 .slider-picture {
+  display: block;
   width: 100%;
   height: 100%;
   border-radius: 20px;
 }
-.slider-item {
-  opacity: 0;
-  transition: all 1s;
-  transform: translateX(30%) scale(0.85);
+
+@keyframes move {
+  from {
+    opacity: 0;
+    transition: all 1s;
+    transform: translateX(30%) scale(0.95)
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%) scale(1);
+  }
 }
-.slider-item.active {
-  opacity: 1;
-  transform: translateX(0%) scale(1);
+.slider-item.active,
+.text-inspire.active {
+  animation: move 0.5s ease-in-out;
 }
 .slider-panel {
   margin-top: 10px;
