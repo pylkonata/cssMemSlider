@@ -74,10 +74,9 @@ squaresWrap.forEach((item, indexSq) => {
   });
 });
 
-//Checkbox - reload page
+//Get new Images-  reload page
 
-const checkbox = document.getElementById('checkbox');
-checkbox.addEventListener('click', () => {
+const btn = document.getElementById('button');
+btn.addEventListener('click', () => {
   document.location.reload();
-  checkbox.value = 'checked';  
 });
