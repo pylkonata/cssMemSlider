@@ -68,7 +68,7 @@ body {
 @keyframes move {
   from {
     opacity: 0;
-    transition: all 1s;
+    /* transition: all 0.2s; */
     transform: translateX(30%) scale(0.95)
   }
   50% {
@@ -81,7 +81,7 @@ body {
 }
 .slider-item.active,
 .text-inspire.active {
-  animation: move 0.5s ease-in-out;
+  animation: move 0.5s;
 }
 .slider-panel {
   margin-top: 10px;
