@@ -22,8 +22,12 @@ function showBestResult() {
   alert(`Best result is: ${bestResult}`);
 }
 function showAllBestResult() {
-  bestAll = JSON.parse(localStorage.getItem('bestAll')) || 0;  
-  alert(`Best result for the whole time is: ${bestAll.bestResult} by ${bestAll.user}`);
+  if (localStorage.getItem('bestAll')) {
+    bestAll = JSON.parse(localStorage.getItem('bestAll'));  
+    alert(`Best result for the whole time is: ${bestAll.bestResult} by ${bestAll.user}`);
+  } else {
+    alert(`Best result for the whole time is: 0`);
+  }  
 }
 const countFunc = function (event) {
   if (event) {
