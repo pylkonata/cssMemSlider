@@ -9,7 +9,7 @@ const btnClearAll = form.querySelector('.clear-all');
 let delayTimer = 5000;
 let count = 0;
 let bestResult = 0;
-let bestAll = {};
+let bestAll;
 
 function showCountResult() {
   alert(`You clicked ${count} times`);
