@@ -1,0 +1,253 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --violet: rgb(105, 105, 204);
+  --spacing: 10px;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: 'Scheherazade New', serif;
+  font-weight: 400;
+  font-size: 25px;
+}
+.section-slider {
+  height: 100vh;
+  background: var(--black);
+  padding: 50px;
+}
+.container {
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slider-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid var(--violet);
+  padding: 20px;
+}
+.slider {
+  width: 100%;
+  height: calc (100vw / 1.77);
+  overflow: hidden;
+  border-radius: 20px;
+  
+}
+input[name="r"] {
+  position: fixed;
+  visibility: hidden;
+}
+
+.slides {
+  width: 500%;
+  height: 100%;
+  display: flex;
+}
+
+.slide {
+  width: 20%;
+  transition: all 0.6s ease;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+.slider-panel {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.text-container {
+  max-width: 700px;
+  overflow: hidden;
+}
+.text-wrap {
+  width: 500%;
+  height: 100%;
+  display: flex;
+}
+.text-inspire {
+  color: var(--white);
+  text-align: left;
+  width: 20%;
+  padding-left: 15px;
+  transition: all 0.6s ease;
+}
+.text {
+  width: 100%;
+  height: 100%;
+}
+.navigation {
+  display: flex;
+  height: 40px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap:20px;
+}
+.point-wrap {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.point {
+  width: 20px;
+  height: 20px;
+  background: var(--white);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+  align-self: center;
+}
+
+.point:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+.point-wrap:hover .point {
+  background: #d283ce;
+  transform: scale(1.2);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.point-wrap:active .point,
+.point-wrap:focus .point {
+  background: #d330cb;
+  transform: scale(0.95);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+
+}
+
+.point:target {
+  background: rgb(105, 105, 204, 0.75);
+}
+
+#radio-btn1:checked~ .slider-panel .navigation .point-wrap .point1,
+#radio-btn2:checked~ .slider-panel .navigation .point-wrap .point2,
+#radio-btn3:checked~ .slider-panel .navigation .point-wrap .point3,
+#radio-btn4:checked~ .slider-panel .navigation .point-wrap .point4,
+#radio-btn5:checked~ .slider-panel .navigation .point-wrap .point5 {
+  background-color: rgb(105, 105, 204, 0.75);
+}
+
+#radio-btn1:checked ~ .slider .slides .s1,
+#radio-btn1:checked~ .slider-panel .text-container .text-wrap .t1 {
+  margin-left: 0;
+}
+
+#radio-btn2:checked~.slider .slides .s1,
+#radio-btn2:checked~.slider-panel .text-container .text-wrap .t1 {
+  margin-left: -20%;
+}
+#radio-btn3:checked~.slider .slides .s1,
+#radio-btn3:checked~.slider-panel .text-container .text-wrap .t1 {
+  margin-left: -40%;
+}
+
+#radio-btn4:checked~.slider .slides .s1,
+#radio-btn4:checked~.slider-panel .text-container .text-wrap .t1 {
+  margin-left: -60%;
+}
+#radio-btn5:checked~.slider .slides .s1,
+#radio-btn5:checked~.slider-panel .text-container .text-wrap .t1 {
+  margin-left: -80%;
+}
+
+@media (max-width: 1350px) {
+  .section-slider {
+    max-width: 100vw;
+    height: 100vh;
+    padding: 10px;
+  }
+  .container {
+    max-width: 100%;
+    height: 100%;
+  }
+  .slider-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+  .slider-panel {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .text-inspire {
+    text-align: center;
+    padding: 0;
+  }
+  .button-wrap {
+    margin-top: 10px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1060px) {
+   .slider-wrapper {
+    padding: 10px;
+  }
+  
+  .section-slider {
+    padding: 10px;
+  }
+  .text-container {
+    max-width: 500px;
+  }
+}
+@media (max-width: 740px) {
+  .text-inspire{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  
+  .text-container {
+    max-width: 80%;
+  }
+  .square-container {
+    max-width: 80%;
+    gap: 12px;
+  }
+  .point-wrap {
+    width: 25px;
+    height: 25px;
+  }
+  .square {
+    width: 15px;
+    height: 15px;
+  }
+  .text-inspire {
+    font-size: 15px;
+  }
+} 
