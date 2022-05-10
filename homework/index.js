@@ -5,7 +5,7 @@ const btnBestResult = form.querySelector('.best-result');
 const btnBestAll = form.querySelector('.best-all');
 const btnClearBR = form.querySelector('.clear-br');
 const btnClearAll = form.querySelector('.clear-all');
-
+let inputValue = document.querySelector('.form-input').value;
 let delayTimer = 5000;
 let count;
 let bestResult = 0;
@@ -54,7 +54,7 @@ function setBRToStorage() {
     bestResult = sessionStorage.getItem('bestResult');
   }  
   if (count > bestResult) {
-    const inputValue = document.querySelector('.form-input').value;
+    inputValue = document.querySelector('.form-input').value;
     bestResult = count;
     bestAll.user = inputValue;
     bestAll.bestResult = bestResult;
@@ -72,7 +72,7 @@ function setBRToStorage() {
 }
 start.addEventListener('click', () => {
   count = 0;
-  const inputValue = document.querySelector('.form-input').value;
+  inputValue = document.querySelector('.form-input').value;
   try {
     if (!/\w+/gi.test(inputValue)) {
       throw new Error('Empty nickname');
@@ -84,7 +84,8 @@ start.addEventListener('click', () => {
       btnBig.addEventListener('click', countFunc);
     }
   } catch (error) {
-    alert('Empty nickname');
+    document.querySelector('.form-input').value = '';
+    alert('Empty nickname');  
   }  
 });
 
