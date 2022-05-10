@@ -29,6 +29,16 @@ function showAllBestResult() {
     alert(`Best result for the whole time is: 0`);
   }  
 }
+function showClearBR() {
+  bestResult = 0;
+  sessionStorage.setItem('bestResult', bestResult);
+  alert('Best Result was cleared and set to 0');
+}
+function showClearAllBR() {
+  bestAll = 0;
+  localStorage.setItem('bestAll', JSON.stringify(bestAll));
+  alert('Best result for the whole time was cleared and set to 0');
+}
 const countFunc = function (event) {
   if (event) {
     count++;
@@ -79,3 +89,5 @@ start.addEventListener('click', () => {
 
 btnBestResult.addEventListener('click', showBestResult);
 btnBestAll.addEventListener('click', showAllBestResult);
+btnClearBR.addEventListener('click', showClearBR);
+btnClearAll.addEventListener('click', showClearAllBR);
