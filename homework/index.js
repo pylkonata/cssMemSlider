@@ -7,9 +7,9 @@ const btnClearBR = form.querySelector('.clear-br');
 const btnClearAll = form.querySelector('.clear-all');
 
 let delayTimer = 5000;
-let count = 0;
+let count;
 let bestResult = 0;
-let bestAll;
+let bestAll={};
 
 function showCountResult() {
   alert(`You clicked ${count} times`);
@@ -23,11 +23,12 @@ function showBestResult() {
 }
 function showAllBestResult() {
   if (localStorage.getItem('bestAll')) {
-    bestAll = JSON.parse(localStorage.getItem('bestAll'));  
-    alert(`Best result for the whole time is: ${bestAll.bestResult} by ${bestAll.user}`);
+    bestAll = JSON.parse(localStorage.getItem('bestAll'));
   } else {
-    alert(`Best result for the whole time is: 0`);
-  }  
+    bestAll.user = null;
+    bestAll.bestResult = 0;
+  }
+  alert(`Best result for the whole time is: ${bestAll.bestResult} by ${bestAll.user}`);
 }
 function showClearBR() {
   bestResult = 0;
@@ -35,7 +36,8 @@ function showClearBR() {
   alert('Best Result was cleared and set to 0');
 }
 function showClearAllBR() {
-  bestAll = 0;
+  bestAll.user = null;
+  bestAll.bestResult = 0;
   localStorage.setItem('bestAll', JSON.stringify(bestAll));
   alert('Best result for the whole time was cleared and set to 0');
 }
@@ -43,9 +45,9 @@ const countFunc = function (event) {
   if (event) {
     count++;
   }
-  console.log(count);
   setBRToStorage();
 };
+
 function setBRToStorage() {
   let temp;
   if (sessionStorage.getItem('bestResult')) {
@@ -54,10 +56,10 @@ function setBRToStorage() {
   if (count > bestResult) {
     const inputValue = document.querySelector('.form-input').value;
     bestResult = count;
-    bestAll = {};
     bestAll.user = inputValue;
     bestAll.bestResult = bestResult;
     sessionStorage.setItem('bestResult', bestResult);
+
     if (localStorage.getItem('bestAll')) {
       temp = JSON.parse(localStorage.getItem('bestAll'));
       if (temp.bestResult >= bestAll.bestResult) {
@@ -66,12 +68,11 @@ function setBRToStorage() {
       }
     }
     localStorage.setItem('bestAll', JSON.stringify(bestAll));
-  }
+  }  
 }
 start.addEventListener('click', () => {
   count = 0;
   const inputValue = document.querySelector('.form-input').value;
-  console.log(inputValue);
   try {
     if (!/\w+/gi.test(inputValue)) {
       throw new Error('Empty nickname');
@@ -82,10 +83,8 @@ start.addEventListener('click', () => {
   setTimeout(() => {
     showCountResult();
     btnBig.removeEventListener('click', countFunc);
-  }, delayTimer);
- 
+  }, delayTimer); 
   btnBig.addEventListener('click', countFunc);
-
 });
 
 btnBestResult.addEventListener('click', showBestResult);
