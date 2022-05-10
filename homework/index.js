@@ -9,7 +9,7 @@ const btnClearAll = form.querySelector('.clear-all');
 let delayTimer = 5000;
 let count;
 let bestResult = 0;
-let bestAll={};
+let bestAll = {};
 
 function showCountResult() {
   alert(`You clicked ${count} times`);
@@ -76,15 +76,16 @@ start.addEventListener('click', () => {
   try {
     if (!/\w+/gi.test(inputValue)) {
       throw new Error('Empty nickname');
+    } else {
+      setTimeout(() => {
+        showCountResult();
+        btnBig.removeEventListener('click', countFunc);
+      }, delayTimer); 
+      btnBig.addEventListener('click', countFunc);
     }
   } catch (error) {
     alert('Empty nickname');
-  }
-  setTimeout(() => {
-    showCountResult();
-    btnBig.removeEventListener('click', countFunc);
-  }, delayTimer); 
-  btnBig.addEventListener('click', countFunc);
+  }  
 });
 
 btnBestResult.addEventListener('click', showBestResult);
