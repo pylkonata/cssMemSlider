@@ -54,6 +54,7 @@ function setBRToStorage() {
   if (count > bestResult) {
     const inputValue = document.querySelector('.form-input').value;
     bestResult = count;
+    bestAll = {};
     bestAll.user = inputValue;
     bestAll.bestResult = bestResult;
     sessionStorage.setItem('bestResult', bestResult);
