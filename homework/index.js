@@ -8,7 +8,7 @@ const btnClearAll = form.querySelector('.clear-all');
 
 let delayTimer = 5000;
 let count = 0;
-let bestResult;
+let bestResult = 0;
 let bestAll = {};
 
 function showCountResult() {
@@ -16,11 +16,13 @@ function showCountResult() {
 }
 
 function showBestResult() {
-  bestResult = localStorage.getItem('bestResult');
+  if (sessionStorage.getItem('bestResult')) {
+    bestResult = sessionStorage.getItem('bestResult');    
+  }
   alert(`Best result is: ${bestResult}`);
 }
 function showAllBestResult() {
-  bestAll = JSON.parse(localStorage.getItem('bestAll'));
+  bestAll = JSON.parse(localStorage.getItem('bestAll')) || 0;  
   alert(`Best result for the whole time is: ${bestAll.bestResult} by ${bestAll.user}`);
 }
 const countFunc = function (event) {
@@ -28,22 +30,29 @@ const countFunc = function (event) {
     count++;
   }
   console.log(count);
-  setBRToLocalStorage();
+  setBRToStorage();
 };
-function setBRToLocalStorage() {
-  bestResult = localStorage.getItem('bestResult');
+function setBRToStorage() {
+  let temp;
+  if (sessionStorage.getItem('bestResult')) {
+    bestResult = sessionStorage.getItem('bestResult');
+  }  
   if (count > bestResult) {
     const inputValue = document.querySelector('.form-input').value;
     bestResult = count;
     bestAll.user = inputValue;
     bestAll.bestResult = bestResult;
-    localStorage.setItem('bestResult', bestResult);
+    sessionStorage.setItem('bestResult', bestResult);
+    if (localStorage.getItem('bestAll')) {
+      temp = JSON.parse(localStorage.getItem('bestAll'));
+      if (temp.bestResult >= bestAll.bestResult) {
+        bestAll.user = temp.user;
+        bestAll.bestResult = temp.bestResult;
+      }
+    }
     localStorage.setItem('bestAll', JSON.stringify(bestAll));
   }
 }
-
-// window.addEventListener('storage', console.log('localStorage update'));
-
 start.addEventListener('click', () => {
   count = 0;
   const inputValue = document.querySelector('.form-input').value;
@@ -63,7 +72,6 @@ start.addEventListener('click', () => {
   btnBig.addEventListener('click', countFunc);
 
 });
-
 
 btnBestResult.addEventListener('click', showBestResult);
 btnBestAll.addEventListener('click', showAllBestResult);
