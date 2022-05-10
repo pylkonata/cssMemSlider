@@ -42,7 +42,7 @@ function setBRToLocalStorage() {
   }
 }
 
-window.addEventListener('storage', console.log('localStorage update'));
+// window.addEventListener('storage', console.log('localStorage update'));
 
 start.addEventListener('click', () => {
   count = 0;
